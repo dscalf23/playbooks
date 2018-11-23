@@ -7,7 +7,4 @@
       url: https://www.dropbox.com/s/dlzlcnwt4xzz1rm/beta.sh
       dest: /var/prtg/scriptsxml/SuperSensor.sh
       mode: 0755
-
-- name: Changing perm of "/var/prtg/scriptsxml/SuperSensor.sh", adding "+x"
-  file: dest=/var/prtg/scriptsxml/SuperSensor.sh mode=a+x
 ...
