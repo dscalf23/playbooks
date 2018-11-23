@@ -11,7 +11,7 @@
     mode: 0775
     recurse: yes
  
-  -name: Get the sctipt from Git 
+  - name: Get the sctipt from Git 
   git:
     repo: 'https://github.com/dscalf23/scripts/blob/master/SuperSensor.sh'
     dest: /var/prtg/scriptsxml/SuperSensor.sh
