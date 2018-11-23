@@ -11,9 +11,7 @@
     mode: 0775
     recurse: yes
  
-  - name: download beta.sh as SuperSensor.sh
-  get_url:
-    url: https://www.dropbox.com/s/dlzlcnwt4xzz1rm/beta.sh
+  - git:
+    repo: 'https://github.com/dscalf23/scripts/blob/master/SuperSensor.sh'
     dest: /var/prtg/scriptsxml/SuperSensor.sh
-    mode: 0755
- 
+    
