@@ -1,6 +1,5 @@
 ---
 - hosts: Centos7
- tasks:
 - name: Download SuporSensor
  get_url:
   url: https://www.dropbox.com/s/dlzlcnwt4xzz1rm/beta.sh
