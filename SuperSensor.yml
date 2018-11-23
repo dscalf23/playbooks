@@ -14,4 +14,3 @@
     url: https://www.dropbox.com/s/dlzlcnwt4xzz1rm/beta.sh
     dest: /var/prtg/scriptsxml/SuperSensor.sh
     mode: 0755
-...
