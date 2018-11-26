@@ -1,6 +1,6 @@
 ---
 - hosts: Centos7
-- tasks:
+  tasks:
   - name: Creates directory
     file:
       path: /var/prtg/scriptsxml
