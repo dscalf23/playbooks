@@ -1,5 +1,5 @@
 ---
-- hosts: Linux
+- hosts: All
   tasks:
   - name: Creates directory
     file:
