@@ -1,0 +1,16 @@
+---
+- hosts: All
+  tasks:
+  - name: Creates directory
+    file:
+      path: /var/prtg/scriptsxml
+      state: directory
+      owner: root
+      group: root
+      mode: 0775
+
+  - name: Get the sctipt from Github (wget) 
+    get_url:
+      url: 'https://github.com/dscalf23/scripts/blob/master/SuperSensor.sh'
+      dest: /var/prtg/scriptsxml/SuperSensor.sh
+      mode: 0775
