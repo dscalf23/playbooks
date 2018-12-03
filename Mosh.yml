@@ -1,0 +1,26 @@
+---
+- hosts: all
+  tasks:
+  - apt:
+    state: latest
+    pkg: "{{ item }}"
+    with_items:
+      - mosh
+    when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+  - yum:
+    state: latest
+    pkg: "{{ item }}"
+    with_items:
+      - mosh
+    when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
+  - ufw:
+    rule: allow
+    name: MOSH
+    port: 60000:61000
+    proto: udp
+    when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+  - firewalld:
+    port: 60000-61000/udp
+    permanent: true
+    state: enabled
+    when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
