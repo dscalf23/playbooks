@@ -1,15 +1,11 @@
 ---
 - hosts: all
   tasks:
-  - apt:
-    state: latest
-    pkg: "{{ item }}"
+  - apt: name=$item state=latest
     with_items:
       - mosh
     when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
-  - yum:
-    state: latest
-    pkg: "{{ item }}"
+  - yum: name=$item state=latest
     with_items:
       - mosh
     when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
