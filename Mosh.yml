@@ -10,13 +10,13 @@
       - mosh
     when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
   - ufw:
-    rule: allow
-    name: MOSH
-    port: 60000:61000
-    proto: udp
-    when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+    - rule: allow
+    - name: MOSH
+    - port: 60000:61000
+    - proto: udp
+    - when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
   - firewalld:
-    port: 60000-61000/udp
-    permanent: true
-    state: enabled
-    when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
+    - port: 60000-61000/udp
+    - permanent: true
+    - state: enabled
+    - when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
