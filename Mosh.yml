@@ -1,6 +1,6 @@
 ---
 - hosts: all
-  - tasks:
+  tasks:
   - apt: name=$item state=latest
     with_items:
       - mosh
