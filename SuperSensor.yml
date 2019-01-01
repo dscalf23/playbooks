@@ -14,3 +14,4 @@
       url: 'https://raw.githubusercontent.com/dscalf23/scripts/master/SuperSensor.sh'
       dest: /var/prtg/scriptsxml/SuperSensor.sh
       mode: 0775
+      force: yes
