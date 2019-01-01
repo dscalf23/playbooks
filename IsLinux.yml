@@ -1,8 +1,8 @@
 ---
 - hosts: all
   tasks:
-    - name: "Mark as Linux"
-      set_fact:
-        is_linux: true
-        cacheable: true
-      when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux' or ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+  - name: "Mark as Linux"
+    set_fact:
+      is_linux: true
+      cacheable: true
+    when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux' or ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
