@@ -5,4 +5,4 @@
     set_fact:
       is_linux: true
       cacheable: true
-    when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux' or ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+    when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux' or ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu' or ansible_distribution == 'CloudLinux'
