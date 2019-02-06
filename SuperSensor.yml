@@ -9,7 +9,7 @@
       group: root
       mode: 0775
 
-  - name: Get the sctipt from Github (wget) 
+  - name: Get the sctipt from Github (wget)
     get_url:
       url: 'https://raw.githubusercontent.com/dscalf23/scripts/master/SuperSensorV2.py'
       dest: /var/prtg/scriptsxml/SuperSensor.py
@@ -26,13 +26,13 @@
     yum:
       name: https://dl.fedoraproject.org/pub/epel/epel-release-latest-{{ ansible_distribution_major_version }}.noarch.rpm
       state: present
-    when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
+    when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux' or ansible_distribution == 'CloudLinux'
 
   - name: Import EPEL GPG key.
     rpm_key:
       key: /etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-{{ ansible_distribution_major_version }}
       state: present
-    when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
+    when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux' or ansible_distribution == 'CloudLinux'
 
   - name: install on Ubuntu & Debian
     apt:
@@ -48,6 +48,6 @@
       update_cache: yes
       name: "{{ yumpack }}"
       state: latest
-    when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
+    when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux' or ansible_distribution == 'CloudLinux'
 
   - pip: name=psutil
