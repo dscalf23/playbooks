@@ -18,17 +18,20 @@
 
   - name: install on Ubuntu & Debian
     apt:
-      when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
-      update_cache: yes
+      update_cahce: yes
+      cache_valid_time: 0
+      force_apt_get: yes
       name: "{{ aptpack }}"
       state: latest
+    when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
 
   - name: install on centos
     yum:
-      when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
       update_cache: yes
       name: "{{ yumpack }}"
-      state: latest  
+      state: latest
+    when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
+
 
   - pip:
     name: 'psutil'
