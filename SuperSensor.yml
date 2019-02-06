@@ -17,10 +17,11 @@
       force: yes
 
   - apt:
-    when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
-    update_cache: yes
-    name: "{{ packages }}"
-    vars:
+    - when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+    - update_cache: yes
+    - name: "{{ packages }}"
+    - state: latest
+    - vars:
       packages:
       - python
       - python-pip
@@ -48,10 +49,11 @@
       - python-dev
       - libssl-dev
   - yum:
-    when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
-    update_cache: yes
-    name: "{{ packages }}"
-    vars: 
+    - when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
+    - update_cache: yes
+    - name: "{{ packages }}"
+    - state: latest
+    - vars: 
       packages:
       - python
       - python-pip
