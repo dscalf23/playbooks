@@ -16,9 +16,27 @@
       mode: 0775
       force: yes
 
+  - name: ubuntu | ensuring Ubuntu universe repo is enabled ({{ ansible_distribution_version }} >= 16.04)
+    apt_repository:
+      repo: "deb http://us.archive.ubuntu.com/ubuntu {{ ansible_distribution_release|lower }} universe"
+      state: present
+    when: when: ansible_distribution == 'Ubuntu'
+
+  - name: Install EPEL repo.
+    yum:
+      name: https://dl.fedoraproject.org/pub/epel/epel-release-latest-{{ ansible_distribution_major_version }}.noarch.rpm
+      state: present
+    when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
+
+  - name: Import EPEL GPG key.
+    rpm_key:
+      key: /etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-{{ ansible_distribution_major_version }}
+      state: present
+    when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
+
   - name: install on Ubuntu & Debian
     apt:
-      update_cahce: yes
+      update_cache: yes
       cache_valid_time: 0
       force_apt_get: yes
       name: "{{ aptpack }}"
@@ -32,6 +50,4 @@
       state: latest
     when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
 
-
-  - pip:
-    name: 'psutil'
+  - pip: name=psutil
