@@ -22,7 +22,6 @@
       update_cache: yes
       name: "{{ aptpack }}"
       state: latest
-      vars:
 
   - name: install on centos
     yum:
