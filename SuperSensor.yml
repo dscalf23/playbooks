@@ -18,6 +18,7 @@
 
   - name: Installs Python & PIP
     apt:
+      when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
       update_cache: yes
       name: "{{ packages }}"
       state: latest
@@ -48,8 +49,8 @@
         - libgle3
         - python-dev
         - libssl-dev
-      when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
-    yum: 
+    yum:
+      when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
       update_cache: yes
       name: "{{ packages }}"
       state: latest
@@ -64,7 +65,6 @@
         - libxslt-devel
         - libffi-devel
         - openssl-devel
-      when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
 
   - name: Pip install psutil
     pip:
