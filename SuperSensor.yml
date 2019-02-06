@@ -20,10 +20,10 @@
     when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
     apt:
       update_cache: yes
-      name: "{{ packages }}"
+      name: "{{ aptpack }}"
       state: latest
       vars:
-        packages:
+        aptpack:
         - python
         - python-pip
         - build-essential
@@ -54,10 +54,10 @@
     when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
     yum:
       update_cache: yes
-      name: "{{ packages }}"
+      name: "{{ yumpack }}"
       state: latest
       vars: 
-        packages:
+        yumpack:
         - python
         - python-pip
         - gcc
@@ -69,4 +69,4 @@
         - openssl-devel
 
   - pip:
-    name: psutil
+    name: 'psutil'
