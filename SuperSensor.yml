@@ -17,56 +17,19 @@
       force: yes
 
   - name: install on Ubuntu & Debian
-    when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
     apt:
+      when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
       update_cache: yes
       name: "{{ aptpack }}"
       state: latest
       vars:
-        aptpack:
-        - python
-        - python-pip
-        - build-essential
-        - autoconf
-        - libtool
-        - pkg-config
-        - python-opengl
-        - python-imaging
-        - python-pyrex
-        - python-pyside.qtopengl
-        - idle-python2.7
-        - qt4-dev-tools
-        - qt4-designer
-        - libqtgui4
-        - libqtcore4
-        - libqt4-xml
-        - libqt4-test
-        - libqt4-script
-        - libqt4-network
-        - libqt4-dbus
-        - python-qt4
-        - python-qt4-gl
-        - libgle3
-        - python-dev
-        - libssl-dev
 
   - name: install on centos
-    when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
     yum:
+      when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
       update_cache: yes
       name: "{{ yumpack }}"
-      state: latest
-      vars: 
-        yumpack:
-        - python
-        - python-pip
-        - gcc
-        - gcc-c++
-        - kernel-devel
-        - python-devel
-        - libxslt-devel
-        - libffi-devel
-        - openssl-devel
+      state: latest  
 
   - pip:
     name: 'psutil'
