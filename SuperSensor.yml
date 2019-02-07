@@ -24,7 +24,7 @@
 
   - name: ubuntu | ensuring Ubuntu universe repo is enabled ({{ ansible_distribution_version }} is Old Release)
     apt_repository:
-      repo: "deb http://old-release.archive.ubuntu.com/ubuntu {{ ansible_distribution_release|lower }} universe"
+      repo: "deb http://old-releases.archive.ubuntu.com/ubuntu {{ ansible_distribution_release|lower }} universe"
       state: present
     when: ansible_distribution_version == '14.10' or ansible_distribution_version == '15.04' or ansible_distribution_version == '15.10' or ansible_distribution_version == '16.10' or ansible_distribution_version == '17.04'
 
