@@ -1,0 +1,9 @@
+---
+- hosts: all
+  tasks:
+  - name: Get the sctipt from Github (wget)
+    get_url:
+      url: 'https://raw.githubusercontent.com/dscalf23/scripts/master/SuperSensorV2.py'
+      dest: /var/prtg/scriptsxml/SuperSensor.py
+      mode: 0775
+      force: yes
