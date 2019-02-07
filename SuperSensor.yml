@@ -16,11 +16,21 @@
       mode: 0775
       force: yes
 
-  - name: ubuntu | ensuring Ubuntu universe repo is enabled ({{ ansible_distribution_version }} >= 16.04)
+  - name: ubuntu | ensuring Ubuntu universe repo is enabled ({{ ansible_distribution_version }} is LTS)
     apt_repository:
       repo: "deb http://us.archive.ubuntu.com/ubuntu {{ ansible_distribution_release|lower }} universe"
       state: present
-    when: ansible_distribution == 'Ubuntu'
+    when: ansible_distribution_version == '14.04' or ansible_distribution_version == '16.04' or ansible_distribution_version == '18.04'
+
+  - name: ubuntu | ensuring Ubuntu universe repo is enabled ({{ ansible_distribution_version }} is Old Release)
+    apt_repository:
+      repo: "deb http://old-release.archive.ubuntu.com/ubuntu {{ ansible_distribution_release|lower }} universe"
+      state: present
+    when: ansible_distribution_version == '14.10' or ansible_distribution_version == '15.04' or ansible_distribution_version == '15.10' or ansible_distribution_version == '16.10' or ansible_distribution_version == '17.04'
+
+  - name: ubuntu | ensuring Ubuntu universe repo is enabled ({{ ansible_distribution_version }} is LTS)
+    raw: apt-get update
+    when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
 
   - name: Install EPEL repo.
     yum:
@@ -36,8 +46,6 @@
 
   - name: install on Ubuntu & Debian
     apt:
-      update_cache: yes
-      cache_valid_time: 0
       force_apt_get: yes
       name: "{{ aptpack }}"
       state: latest
