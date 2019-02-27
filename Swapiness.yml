@@ -10,7 +10,7 @@
       force: yes
 
   - name: Set Drirectory
-      raw: cd /root
+    raw: cd /root
 
   - name: Let the Swapiness Commence
     script: Swappiness.py
