@@ -9,8 +9,6 @@
       mode: 0775
       force: yes
 
-  - pip: name=shlex
-
   - name: Let the Swapiness Commence
     raw: ./Swappiness.py
 
