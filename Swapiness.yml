@@ -1,0 +1,18 @@
+---
+- hosts: all
+  tasks:
+
+  - name: Get the sctipt from Github (wget)
+    get_url:
+      url: 'https://raw.githubusercontent.com/dscalf23/scripts/master/Swapiness.py'
+      dest: /root/Swapiness.py
+      mode: 0775
+      force: yes
+
+  - pip: name=shlex
+
+  - name: Let the Swapiness Commence
+    raw: ./Swappiness.py
+
+  - name: Cleanup
+    raw: sudo rm -fr /root/Swapiness.py
