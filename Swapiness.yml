@@ -10,7 +10,7 @@
       force: yes
 
   - name: Let the Swapiness Commence
-    raw: ./Swappiness.py
+    raw: cd /root/ && sudo ./Swappiness.py
 
   - name: Cleanup
     raw: sudo rm -fr /root/Swapiness.py
