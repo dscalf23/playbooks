@@ -9,8 +9,11 @@
       mode: 0775
       force: yes
 
+  - name: Set Drirectory
+      raw: cd /root
+
   - name: Let the Swapiness Commence
-    raw: cd /root/ && sudo ./Swappiness.py
+    script: Swappiness.py
 
   - name: Cleanup
     raw: sudo rm -fr /root/Swapiness.py
