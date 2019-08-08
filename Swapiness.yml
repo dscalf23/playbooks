@@ -13,7 +13,7 @@
     raw: cd /root
 
   - name: Let the Swapiness Commence
-    raw: ./Swapiness.py
+    raw: ./root/Swapiness.py
 
   - name: Cleanup
     raw: sudo rm -fr /root/Swapiness.py
