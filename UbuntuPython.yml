@@ -3,4 +3,4 @@
   gather_facts: no
   tasks:
   - name: 'install python2'
-    raw: apt-get update && apt-get -y install python python-simplejson python-apt
+    raw: apt-get update && apt-get -y install python python-simplejson python-apt python-setuptools
