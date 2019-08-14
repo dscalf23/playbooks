@@ -1,0 +1,9 @@
+---
+- hosts: all
+  tasks:
+  - name: Get the sctipt from Github (wget)
+    get_url:
+      url: 'https://code.izoox.com/packages/dns-sync/raw/master/dns-sync.phar'
+      dest: /usr/local/bin/dns-sync
+      mode: 0775
+      force: yes
